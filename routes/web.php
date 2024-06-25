@@ -3,13 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\TrackedCargoController;
+use App\Http\Controllers\TrackTraceController;
 
-Route::get('/', [CargoController::class, 'index'])->name('cargo.index');
-Route::get('/search', [CargoController::class, 'search'])->name('cargo.search');
-
-
-
-
-
+Route::get('/', [TrackTraceController::class, 'search'])->name('tracktrace.search');
 
 

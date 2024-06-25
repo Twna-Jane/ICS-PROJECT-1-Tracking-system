@@ -14,8 +14,7 @@ class CargoController extends Controller
      */
     public function index()
     {
-        $cargos = Cargo::all();
-        return view('index',compact('cargos'));
+        //
     }
 
     /**
@@ -64,12 +63,5 @@ class CargoController extends Controller
     public function destroy(Cargo $cargo)
     {
         //
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->get('search');
-        $cargos = Cargo::where('awbno', 'like', '%'.$search.'%')->get();
-        return view('index', compact('cargos'));    
     }
 }

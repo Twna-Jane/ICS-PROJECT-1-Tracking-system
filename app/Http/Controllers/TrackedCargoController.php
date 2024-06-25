@@ -65,13 +65,4 @@ class TrackedCargoController extends Controller
     {
         //
     }
-
-    public function search()
-    {
-        $search = $_GET['query'];
-        $tcargos = TrackedCargo::where('awbno', 'like', "%$search%")->get();
-    
-        return view('search',compact('tcargos'));
-    }
-
 }

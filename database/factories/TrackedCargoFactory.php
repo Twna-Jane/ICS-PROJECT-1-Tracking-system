@@ -17,7 +17,7 @@ class TrackedCargoFactory extends Factory
     public function definition(): array
     {
         return [
-            'awbno' => 1815279,
+            'awbno' => 8141884,
             'flight' => fake()->word(),
             'status' => fake()->word(),
             'location' => fake()->word()

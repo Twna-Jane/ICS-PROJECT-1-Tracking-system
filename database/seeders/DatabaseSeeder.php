@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);*/
 
-        Cargo::factory(5)->create();
+        //Cargo::factory(5)->create();
 
         //TrackedCargo::factory(5)->create();
     }
