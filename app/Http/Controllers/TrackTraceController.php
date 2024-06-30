@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class TrackTraceController extends Controller
 {
+    public function index()
+    {
+        return view('tracktrace.index');
+    }
+
     public function search(Request $request)
     {
         $search = $request->input('search');
@@ -18,7 +23,7 @@ class TrackTraceController extends Controller
         // Search in TrackedCargo
         $tcargos = TrackedCargo::where('awbno', 'like', '%'.$search.'%')->get();
 
-        return view('index', [
+        return view('tracktrace.results', [
             'cargos' => $cargos,
             'tcargos' => $tcargos,
             'search' => $search,
