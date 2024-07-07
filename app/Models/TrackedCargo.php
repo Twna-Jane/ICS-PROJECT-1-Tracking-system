@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class TrackedCargo
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrackedCargo extends Model
 {
-    
+    use HasFactory;
     protected $perPage = 20;
 
     /**

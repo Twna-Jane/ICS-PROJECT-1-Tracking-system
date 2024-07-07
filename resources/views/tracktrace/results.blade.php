@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <center>
 @if ($cargos->isEmpty() && $tcargos->isEmpty())
     <p>No results found.</p>
