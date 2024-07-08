@@ -8,6 +8,7 @@
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
+    @if (Route::has('login'))
     <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -19,12 +20,19 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ml-auto">
                     <a href="#about" class="text-gray-500 hover:text-gray-700 focus:text-gray-700">About Us</a>
                     <a href="#services" class="text-gray-500 hover:text-gray-700 focus:text-gray-700">Services</a>
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="text-gray-500 hover:text-gray-700 focus:text-gray-700">Dashboard</a>
+                    @else
                     <a href="{{ route('login') }}" class="text-gray-500 hover:text-gray-700 focus:text-gray-700">Login</a>
+                    @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="text-gray-500 hover:text-gray-700 focus:text-gray-700">Register</a>
                 </div>
             </div>
         </div>
+        @endif
+        @endauth
     </nav>
+    @endif
 
     <!-- Hero Section -->
     <header class="bg-cover bg-center h-96" style="background-image: url('{{ asset('cargo4.jpg') }}');">
