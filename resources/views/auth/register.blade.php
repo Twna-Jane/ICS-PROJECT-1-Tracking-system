@@ -1,4 +1,13 @@
 <x-guest-layout>
+
+<x-validation-errors class="mb-4" />
+
+            <div class="mb-4 font-medium text-sm text-green-600">
+                <div class="mb-4">
+            <img src="{{ asset('profile.jpg') }}" alt="Profile" class="mx-auto h-12 w-auto rounded-full mb-4">
+        </div>
+            </div>
+        
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

@@ -8,6 +8,19 @@ use App\Http\Controllers\TrackTraceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 
+
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
 Route::resource('cargos', CargoController::class)->middleware(['auth','usertype']);
 Route::resource('tracked-cargos', TrackedCargoController::class)->middleware(['auth','usertype']);
 
