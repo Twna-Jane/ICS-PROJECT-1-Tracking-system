@@ -6,17 +6,14 @@
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Tracked Cargo</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('tracked-cargos.index') }}"> {{ __('Back') }}</a>
-                        </div>
-                    </div>
+        <div class="flex justify-center items-center h-screen bg-blue-100"> 
+            <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+                <h1 class="text-3xl font-semibold mb-6 text-center">{{ __('Show') }} Tracked Cargo</h1>
+
+                <div class="mb-4">
+                    <strong class="block mb-1">Awbno:</strong>
+                    <span class="text-gray-700">{{ $trackedCargo->awbno }}</span>
+                </div>
 
                     <div class="card-body bg-white">
                         
