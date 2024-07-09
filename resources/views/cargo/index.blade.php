@@ -5,67 +5,61 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span id="card_title" style="font-size: 1.25rem;">
-                                {{ __('Cargos') }}
-                            </span>
-                            <div class="float-right">
-                                <a href="{{ route('cargos.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
-                                    {{ __('Create New') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success m-4">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
+    <div class="container mx-auto py-4">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="flex justify-between items-center bg-gray-200 px-4 py-3">
+                <h2 class="text-lg font-semibold text-gray-800">{{ __('Cargos') }}</h2>
+                <a href="{{ route('cargos.create') }}" class="btn btn-primary btn-sm">{{ __('Create New') }}</a>
+            </div>
 
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Awbno</th>
-                                        <th>From</th>
-                                        <th>To</th>
-                                        <th>Weight</th>
-                                        <th>Pieces</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($cargos as $cargo)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td>{{ $cargo->awbno }}</td>
-                                            <td>{{ $cargo->from }}</td>
-                                            <td>{{ $cargo->to }}</td>
-                                            <td>{{ $cargo->weight }}</td>
-                                            <td>{{ $cargo->pieces }}</td>
-                                            <td>
-                                                <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('cargos.show', $cargo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('cargos.edit', $cargo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success m-4">
+                    <p>{{ $message }}</p>
                 </div>
+            @endif
+
+            <div class="p-4">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('No') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('Awbno') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('From') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('To') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('Weight') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('Pieces') }}</th>
+                                <th class="py-2 px-4 border-b border-gray-200 text-left">{{ __('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cargos as $cargo)
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ ++$i }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->awbno }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->from }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->to }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->weight }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->pieces }}</td>
+                                    <td class="py-2 px-4 border-b border-gray-200">
+                                        <div class="flex">
+                                            <a href="{{ route('cargos.show', $cargo->id) }}" class="btn btn-sm btn-primary mr-2">{{ __('Show') }}</a>
+                                            <a href="{{ route('cargos.edit', $cargo->id) }}" class="btn btn-sm btn-success mr-2">{{ __('Edit') }}</a>
+                                            <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">{{ __('Delete') }}</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="px-4 py-3">
                 {!! $cargos->withQueryString()->links() !!}
             </div>
         </div>
