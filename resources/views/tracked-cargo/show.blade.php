@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="content container-fluid">
-        <div class="flex justify-center items-center h-screen bg-blue-100"> <!-- Added bg-blue-100 for pale blue background -->
+        <div class="flex justify-center items-center h-screen bg-blue-100"> 
             <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
                 <h1 class="text-3xl font-semibold mb-6 text-center">{{ __('Show') }} Tracked Cargo</h1>
 
