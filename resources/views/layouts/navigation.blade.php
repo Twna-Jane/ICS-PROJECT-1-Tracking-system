@@ -51,6 +51,10 @@
                         <x-nav-link :href="route('tracked-cargos.index')" :active="request()->routeIs('tracked-cargos.index')">
                             {{ __('Tracked Cargos') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('analytics')" :active="request()->routeIs('analytics')">
+                            {{ __('Analytics') }}
+                        </x-nav-link>
                     @endif
                     
                     <!-- Carrier -->

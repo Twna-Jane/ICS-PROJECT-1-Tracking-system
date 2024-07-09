@@ -34,5 +34,5 @@ Route::get('carrier/dashboard',[HomeController::class,'carrierindex'])->middlewa
 
 Route::get('analytics', function(){
     return view('analytics');
-});
+})->name('analytics');
 
