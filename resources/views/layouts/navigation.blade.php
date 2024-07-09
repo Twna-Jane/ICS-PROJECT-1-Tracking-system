@@ -5,25 +5,62 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
+                    <!-- User -->
+                    @if  (Auth::user()->usertype == 'user')
                     <a href="{{ route('dashboard') }}">
                         <img class="h-8 w-auto" src="{{ asset('logo.jpg') }}" alt="Uganda Airlines">
                     </a>
+                    @endif
+
+                    <!-- Admin -->
+                    @if  (Auth::user()->usertype == 'admin')
+                    <a href="{{ route('admindashboard') }}">
+                        <img class="h-8 w-auto" src="{{ asset('logo.jpg') }}" alt="Uganda Airlines">
+                    </a>
+                    @endif
+
+                    <!-- Carrier -->
+                    @if  (Auth::user()->usertype == 'carrier')
+                    <a href="{{ route('carrierdashboard') }}">
+                        <img class="h-8 w-auto" src="{{ asset('logo.jpg') }}" alt="Uganda Airlines">
+                    </a>
+                    @endif
+
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+
+                    <!-- User -->
+                    @if  (Auth::user()->usertype == 'user')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endif
 
                     <!-- Admin -->
                     @if  (Auth::user()->usertype == 'admin')
+                        <x-nav-link :href="route('admindashboard')" :active="request()->routeIs('admindashboard')">
+                            {{ __('Dashboard') }}
+                         </x-nav-link>
+
                         <x-nav-link :href="route('cargos.index')" :active="request()->routeIs('cargos.index')">
                             {{ __('Cargos') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('tracked-cargos.index')" :active="request()->routeIs('tracked-cargos.index')">
                             {{ __('Tracked Cargos') }}
+                        </x-nav-link>
+                    @endif
+                    
+                    <!-- Carrier -->
+                    @if  (Auth::user()->usertype == 'carrier')
+                        <x-nav-link :href="route('carrierdashboard')" :active="request()->routeIs('carrierdashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('tracked-cargos.index')" :active="request()->routeIs('tracked-cargos.index')">
+                            {{ __('Update Cargo Status') }}
                         </x-nav-link>
 
                     @endif

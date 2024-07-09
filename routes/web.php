@@ -29,8 +29,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('admin/dashboard',[HomeController::class,'adminindex'])->middleware(['auth','usertype']);
-Route::get('carrier/dashboard',[HomeController::class,'carrierindex'])->middleware(['auth','usertype']);
+Route::get('admin/dashboard',[HomeController::class,'adminindex'])->middleware(['auth','usertype'])->name('admindashboard');
+Route::get('carrier/dashboard',[HomeController::class,'carrierindex'])->middleware(['auth','usertype'])->name('carrierdashboard');
 
 Route::get('analytics', function(){
     return view('analytics');
