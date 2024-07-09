@@ -19,28 +19,32 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Awbno:</strong>
-                                    {{ $cargo->awbno }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>From:</strong>
-                                    {{ $cargo->from }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>To:</strong>
-                                    {{ $cargo->to }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Weight:</strong>
-                                    {{ $cargo->weight }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Pieces:</strong>
-                                    {{ $cargo->pieces }}
-                                </div>
-
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th style="width: 30%;">Awbno:</th>
+                                        <td>{{ $cargo->awbno }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>From:</th>
+                                        <td>{{ $cargo->from }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>To:</th>
+                                        <td>{{ $cargo->to }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Weight:</th>
+                                        <td>{{ $cargo->weight }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pieces:</th>
+                                        <td>{{ $cargo->pieces }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
