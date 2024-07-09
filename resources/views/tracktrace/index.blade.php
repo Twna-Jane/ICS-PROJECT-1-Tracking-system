@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+<<<<<<< Updated upstream
     <div class="flex justify-center items-center h-screen bg-blue-100"> <!-- Added bg-blue-100 for pale blue background -->
         <div class="text-center">
             <h1 class="text-3xl font-semibold mb-6">Track & Trace</h1>
@@ -17,3 +17,14 @@
 @endsection
 
 
+=======
+    <center>
+    <h1> Track & Trace </h1>
+    <form id="searchForm" action="{{ route('tracktrace.search') }}" method="GET">   
+        @csrf
+        <input type="text" name="search" placeholder="Enter AWB Number">
+        <button type="submit">Submit</button>
+    </form>
+    </center>
+@endsection
+>>>>>>> Stashed changes
