@@ -61,13 +61,19 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $trackedCargo->location }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <form action="{{ route('tracked-cargos.destroy', $trackedCargo->id) }}" method="POST">
-                                                    <a href="{{ route('tracked-cargos.show', $trackedCargo->id) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+
+                                                    <a href="{{ route('tracked-cargos.show', $trackedCargo->id) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                            {{ __('Show') }}
+                                        </a>
                                                     
                                                     @if  (Auth::user()->usertype == 'admin')
-                                                    <a href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}" class="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                            {{ __('Edit') }}
+                                        </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">
+                                                {{ __('Delete') }} </button>
                                                     @endif
                                                 </form>
                                             </td>
