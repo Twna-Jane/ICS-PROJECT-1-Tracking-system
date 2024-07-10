@@ -45,16 +45,16 @@
                                 <td class="py-2 px-4 border-b border-gray-200">{{ $cargo->pieces }}</td>
                                 <td class="py-2 px-4 border-b border-gray-200">
                                     <div class="flex">
-                                        <a href="{{ route('cargos.show', $cargo->id) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                        <a href="{{ route('cargos.show', $cargo->id) }}" class="bg-indigo-500 hover:bg-indigo-700 text-black font-bold py-1 px-3 rounded mr-2">
                                             {{ __('Show') }}
                                         </a>
-                                        <a href="{{ route('cargos.edit', $cargo->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                        <a href="{{ route('cargos.edit', $cargo->id) }}" class="bg-green-500 hover:bg-green-700 text-black font-bold py-1 px-3 rounded mr-2">
                                             {{ __('Edit') }}
                                         </a>
                                         <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST" class="inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-3 rounded" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">
                                                 {{ __('Delete') }}
                                             </button>
                                         </form>

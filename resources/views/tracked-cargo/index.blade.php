@@ -62,17 +62,17 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <form action="{{ route('tracked-cargos.destroy', $trackedCargo->id) }}" method="POST">
 
-                                                    <a href="{{ route('tracked-cargos.show', $trackedCargo->id) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                                    <a href="{{ route('tracked-cargos.show', $trackedCargo->id) }}" class="bg-indigo-500 hover:bg-indigo-700 text-black font-bold py-1 px-3 rounded mr-2">
                                             {{ __('Show') }}
                                         </a>
                                                     
                                                     @if  (Auth::user()->usertype == 'admin')
-                                                    <a href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded mr-2">
+                                                    <a href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}" class="bg-green-500 hover:bg-green-700 text-black font-bold py-1 px-3 rounded mr-2">
                                             {{ __('Edit') }}
                                         </a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-black font-bold py-1 px-3 rounded" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }">
                                                 {{ __('Delete') }} </button>
                                                     @endif
                                                 </form>
