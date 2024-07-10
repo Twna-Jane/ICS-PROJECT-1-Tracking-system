@@ -10,12 +10,17 @@ use App\Http\Controllers\HomeController;
 Route::resource('cargos', CargoController::class)->middleware(['auth','usertype']);
 Route::resource('tracked-cargos', TrackedCargoController::class)->middleware(['auth','usertype']);
 
-Route::get('/tracktrace', [TrackTraceController::class, 'index'])->name('tracktrace.index');
-Route::get('/tracktrace/results', [TrackTraceController::class, 'search'])->name('tracktrace.search');
+Route::get('analytics', function(){
+    return view('analytics');
+})->name('analytics');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware('analytics')->group(function () {
+    Route::get('/tracktrace', [TrackTraceController::class, 'index'])->name('tracktrace.index');
+    Route::get('/tracktrace/results', [TrackTraceController::class, 'search'])->name('tracktrace.search');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+}); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,7 +37,6 @@ require __DIR__.'/auth.php';
 Route::get('admin/dashboard',[HomeController::class,'adminindex'])->middleware(['auth','usertype'])->name('admindashboard');
 Route::get('carrier/dashboard',[HomeController::class,'carrierindex'])->middleware(['auth','usertype'])->name('carrierdashboard');
 
-Route::get('analytics', function(){
-    return view('analytics');
-})->name('analytics');
+
+
 
