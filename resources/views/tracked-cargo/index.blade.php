@@ -5,64 +5,69 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Tracked Cargos') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('tracked-cargos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
+<div class="container mx-auto px-4">
+    <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden shadow-md sm:rounded-lg">
+                    <div class="bg-white dark:bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">
+                            {{ __('Tracked Cargos') }}
+                        </h3>
+                        <div class="ml-4 flex-shrink-0">
+                            <a href="{{ route('tracked-cargos.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                {{ __('Create New') }}
+                            </a>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
-                        <div class="alert alert-success m-4">
-                            <p>{{ $message }}</p>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative m-4" role="alert">
+                            <span class="block sm:inline">{{ $message }}</span>
                         </div>
                     @endif
 
-                    <div class="card-body bg-white">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
+                    <div class="bg-white dark:bg-gray-800 p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white dark:bg-gray-800">
+                                <thead>
                                     <tr>
-                                        <th>No</th>
-                                        
-									<th >Awbno</th>
-									<th >Flight</th>
-									<th >Status</th>
-									<th >Location</th>
-
-                                        <th></th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            No
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Awbno
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Flight
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Location
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                     @foreach ($trackedCargos as $trackedCargo)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-										<td >{{ $trackedCargo->awbno }}</td>
-										<td >{{ $trackedCargo->flight }}</td>
-										<td >{{ $trackedCargo->status }}</td>
-										<td >{{ $trackedCargo->location }}</td>
-
-                                            <td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{{ ++$i }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $trackedCargo->awbno }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $trackedCargo->flight }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $trackedCargo->status }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{{ $trackedCargo->location }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <form action="{{ route('tracked-cargos.destroy', $trackedCargo->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tracked-cargos.show', $trackedCargo->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-
+                                                    <a href="{{ route('tracked-cargos.show', $trackedCargo->id) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    
                                                     @if  (Auth::user()->usertype == 'admin')
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a href="{{ route('tracked-cargos.edit', $trackedCargo->id) }}" class="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300" onclick="event.preventDefault(); if(confirm('Are you sure to delete?')) { this.closest('form').submit(); }"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                     @endif
                                                 </form>
                                             </td>
@@ -77,4 +82,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -15,28 +15,32 @@
                     <span class="text-gray-700">{{ $trackedCargo->awbno }}</span>
                 </div>
 
-                    <div class="card-body bg-white">
-                        
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Awbno:</strong>
-                                    {{ $trackedCargo->awbno }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Flight:</strong>
-                                    {{ $trackedCargo->flight }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Status:</strong>
-                                    {{ $trackedCargo->status }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Location:</strong>
-                                    {{ $trackedCargo->location }}
-                                </div>
-
+                <div class="bg-white">
+                    <div class="mb-4">
+                        <strong class="block mb-1">Awbno:</strong>
+                        <span class="text-gray-700">{{ $trackedCargo->awbno }}</span>
                     </div>
+                    <div class="mb-4">
+                        <strong class="block mb-1">Flight:</strong>
+                        <span class="text-gray-700">{{ $trackedCargo->flight }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <strong class="block mb-1">Status:</strong>
+                        <span class="text-gray-700">{{ $trackedCargo->status }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <strong class="block mb-1">Location:</strong>
+                        <span class="text-gray-700">{{ $trackedCargo->location }}</span>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="{{ route('tracked-cargos.index') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        {{ __('Back') }}
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
